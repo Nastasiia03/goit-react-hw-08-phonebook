@@ -30,7 +30,7 @@ export const ContactForm = () => {
 
     return (
     <Formik
-        initialValues={{ name: "", phone: "" }}
+        initialValues={{ name: "", number: "" }}
         onSubmit={(values, actions) => {
           const sameName = contacts.find(contact => contact.name.toLowerCase().includes(values.name.toLowerCase()));
           if (sameName) {
@@ -52,7 +52,7 @@ export const ContactForm = () => {
               </FormField>
               <FormField>
                 Number
-                <Field name="phone" type="tel" validate={validateNumber} />
+                <Field name="number" type="tel" validate={validateNumber} />
                 {errors.phone && touched.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
               </FormField>
 

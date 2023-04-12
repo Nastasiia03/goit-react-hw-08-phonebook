@@ -6,19 +6,30 @@ import { Layout } from "./Layout";
 import { Contacts } from "pages/Contacts";
 import { Login } from "pages/Login";
 import { Register } from "pages/Register";
-import { Navigation } from "./Navigation/Navigation";
-
-
+import { Home } from "pages/Home";
+import { AppBar } from "./AppBar/AppBar";
+import { useDispatch } from 'react-redux';
+import { useAuth } from "hooks/useAuth";
+import { refreshUser } from "redux/auth/operations";
+import { useEffect } from "react";
 
 export const App = () => {
   
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   
-  
-    return (
+    return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
       <Layout>
         <GlobalStyle />
-        <Navigation/>
+        <AppBar/>
         <Routes>
+        <Route path="/" element={<Home/>} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contacts" element={<Contacts />} />
