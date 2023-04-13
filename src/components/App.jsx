@@ -12,6 +12,8 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from "hooks/useAuth";
 import { refreshUser } from "redux/auth/operations";
 import { useEffect } from "react";
+import { PrivateRoute } from "./routes/PrivateRoute";
+import { PublicRoute } from "./routes/PublicRoute";
 
 export const App = () => {
   
@@ -24,18 +26,18 @@ useEffect(() => {
   
     return isRefreshing ? (
     <b>Refreshing user...</b>
-  ) : (
-      <Layout>
+    ) : (
+        <>
         <GlobalStyle />
         <AppBar/>
         <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contacts" element={<Contacts />} />
-        
+       <Route path="/" element={<Layout/>} />
+        <Route index element={<Home/>} />
+        <Route path="/register" element={<PublicRoute redirectTo="/contacts" component={<Register/>} />} />
+        <Route path="/login" element={<PublicRoute redirectTo="/contacts" component={<Login/>} />} />
+          <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<Contacts/>} />} />
        </Routes>
-      </Layout>
+      </>
     )
   }
 
