@@ -7,7 +7,7 @@ import { selectError, selectIsLoading } from "redux/selectors";
 import { fetchContacts } from "redux/operations";
 
 
-export const Contacts = () => {
+ const Contacts = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
@@ -23,3 +23,5 @@ export const Contacts = () => {
         {isLoading && !error && <b>Request in progress...</b>}
         {!isLoading && <><h2>Contacts</h2><Filter /><ContactList /></>}</>
 }
+
+export default Contacts;
