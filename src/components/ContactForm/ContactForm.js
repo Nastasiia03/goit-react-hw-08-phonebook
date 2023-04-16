@@ -53,7 +53,7 @@ export const ContactForm = () => {
               <FormField>
                 Number
                 <Field name="number" type="tel" validate={validateNumber} />
-                {errors.phone && touched.phone && <ErrorMessage>{errors.phone}</ErrorMessage>}
+                {errors.number && touched.number && <ErrorMessage>{errors.number}</ErrorMessage>}
               </FormField>
 
               <Button type="submit">Add contact</Button>
