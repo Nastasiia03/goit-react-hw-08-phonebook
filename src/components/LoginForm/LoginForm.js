@@ -43,7 +43,7 @@ export const LoginForm = () => {
       alignItems: 'center',
     }}
   >
-    <Avatar sx={{ m: 1, width: 47, height: 47, bgcolor: 'green[500]' }}>
+    <Avatar sx={{ m: 1, width: 47, height: 47 }}>
       <LockPerson sx={{ fontSize: 27 }}/>
     </Avatar>
     <Typography component="h1" variant="h5">
@@ -83,15 +83,10 @@ export const LoginForm = () => {
       >
         Sign In
       </Button>
-      <Grid container>
-        <Grid item xs>
-          <Link href="#" variant="body2">
-            Forgot password?
-          </Link>
-        </Grid>
+      <Grid container justifyContent="flex-end">
         <Grid item>
-          <Link href="#" variant="body2">
-            {"Don't have an account? Sign Up"}
+          <Link href="/goit-react-hw-08-phonebook/register" variant="body2">
+            {"Don't have an account? Sign up"}
           </Link>
         </Grid>
       </Grid>
