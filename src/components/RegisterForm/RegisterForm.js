@@ -3,10 +3,7 @@ import { register } from 'redux/auth/operations';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import InputBase from '@mui/material/InputBase';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -34,75 +31,70 @@ export const RegisterForm = () => {
     const theme = createTheme();
 
    return (<ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
+      <Container component="div" maxWidth="xs">
+        
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+           alignItems: 'center',
+            bgcolor: '#37474f',
+           borderRadius: "10px",
+           padding: "23px",
           }}
         >
           <Avatar sx={{ m: 1, width: 47, height: 47 }}>
             <PersonAddAlt1Icon sx={{ fontSize: 27 }}/>
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="white" mb="25px">
             Sign up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
+                <InputBase
                   autoComplete="given-name"
                   name="name"
                   required
                   fullWidth
                   id="name"
-                  label="Name"
-                  autoFocus
+                  placeholder="Name"
+                 autoFocus
+                 variant="outlined"
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
+                <InputBase
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  placeholder="Email Address"
                   name="email"
-                  autoComplete="email"
+                 autoComplete="email"
+                 variant="outlined"
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
+                <InputBase
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  placeholder="Password"
                   type="password"
                   id="password"
-                  autoComplete="new-password"
+                 autoComplete="new-password"
+                 variant="outlined"
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
-            </Grid>
+            
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 4, bgcolor: "#151b1e" }}
               color="success"
             >
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/goit-react-hw-08-phonebook/login" variant="body2">
+                <Link href="/goit-react-hw-08-phonebook/login" variant="body2" sx={{textDecoration: "none", color: "#a7a0a0", fontSize: "13px"}}>
                   Already have an account? Sign in
                 </Link>
               </Grid>

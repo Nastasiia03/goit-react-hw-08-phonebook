@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { GlobalStyle } from "./GlobalStyles";
 import { Layout } from "./Layout";
-import { AppBar } from "./AppBar/AppBar";
+import { Bar } from "./AppBar/AppBar";
 import { useDispatch } from 'react-redux';
 import { useAuth } from "hooks/useAuth";
 import { refreshUser } from "redux/auth/operations";
 import { useEffect, lazy, Suspense } from "react";
 import { PrivateRoute } from "./routes/PrivateRoute";
 import { PublicRoute } from "./routes/PublicRoute";
+import { CssBaseline } from "@mui/material";
 
 const HomePage = lazy(() => import("../pages/Home"));
 const RegisterPage = lazy(() => import("../pages/Register"));
@@ -27,8 +27,8 @@ useEffect(() => {
     <b>Refreshing user...</b>
     ) : (
         <Suspense fallback={<b>Loading...</b>}>
-        <GlobalStyle />
-        <AppBar/>
+          <CssBaseline />
+        <Bar/>
         <Routes>
        <Route path="/" element={<Layout/>} />
         <Route index element={<HomePage/>} />

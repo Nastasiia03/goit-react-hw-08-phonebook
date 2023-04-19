@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 export const Navigation = () => {
-  return <nav>
-  <Link to="/">Home</Link>
-  <Link to="/contacts">Contacts</Link>
-    </nav>
+  return <Box sx={{display: 'flex', gap: "10px", mr: "750px"}}>
+    <Link to="/" style={{ textDecoration: "none" }}><Typography variant="h6" component="div" sx={{ color: "white" }}>Home</Typography></Link>
+  <Link to="/contacts" style={{ textDecoration: "none" }}><Typography variant="h6" component="div" sx={{ color: "white" }}>Contacts</Typography></Link>
+    </Box>
 }

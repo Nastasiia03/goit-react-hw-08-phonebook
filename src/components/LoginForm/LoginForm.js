@@ -3,8 +3,7 @@ import { logIn } from 'redux/auth/operations';
 
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
+import InputBase from '@mui/material/InputBase';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
@@ -33,59 +32,63 @@ export const LoginForm = () => {
     const theme = createTheme();
     
    return <ThemeProvider theme={theme}>
-<Container component="main" maxWidth="xs">
-  <CssBaseline />
-  <Box
+     <Container component="div" maxWidth="xs">
+       <Box
     sx={{
-      marginTop: 8,
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center',
+           alignItems: 'center',
+           bgcolor: '#37474f',
+           borderRadius: "10px",
+           padding: "23px",
     }}
   >
     <Avatar sx={{ m: 1, width: 47, height: 47 }}>
       <LockPerson sx={{ fontSize: 27 }}/>
     </Avatar>
-    <Typography component="h1" variant="h5">
+    <Typography component="h1" variant="h5" color="white" mb="25px">
       Sign in
     </Typography>
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-      <TextField
-        margin="normal"
+    <Box component="form" onSubmit={handleSubmit} noValidate >
+      <InputBase
         required
         fullWidth
         id="email"
-        label="Email Address"
+        placeholder="Email Address"
         name="email"
         autoComplete="email"
-        autoFocus
+             autoFocus
+             variant="outlined"
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
+             
       />
-      <TextField
-        margin="normal"
+      <InputBase
+        
         required
         fullWidth
         name="password"
-        label="Password"
+        placeholder="Password"
         type="password"
         id="password"
-        autoComplete="current-password"
+             autoComplete="current-password"
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "15px", color: "white"}}
       />
       <FormControlLabel
-        control={<Checkbox value="remember" color="primary" />}
-        label="Remember me"
+        control={<Checkbox value="remember" color="default" />}
+             label="Remember me"
+             sx={{color: "#a7a0a0", borderColor: "white"}}
       />
       <Button
         type="submit"
         fullWidth
         variant="contained"
-        color="success"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 3, mb: 4, bgcolor: "#151b1e" }}
       >
         Sign In
       </Button>
       <Grid container justifyContent="flex-end">
         <Grid item>
-          <Link href="/goit-react-hw-08-phonebook/register" variant="body2">
+          <Link href="/goit-react-hw-08-phonebook/register" variant="body2" sx={{textDecoration: "none", color: "#a7a0a0", fontSize: "13px"}}>
             {"Don't have an account? Sign up"}
           </Link>
         </Grid>

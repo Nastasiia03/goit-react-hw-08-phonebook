@@ -7,6 +7,7 @@ import { selectError, selectIsLoading } from "redux/selectors";
 import { fetchContacts } from "redux/operations";
 
 
+
  const Contacts = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector(selectIsLoading);
@@ -19,7 +20,7 @@ import { fetchContacts } from "redux/operations";
     }, [dispatch])
 
     return <><h1>Phonebook</h1>
-        <ContactForm  />
+        <ContactForm />
         {isLoading && !error && <b>Request in progress...</b>}
         {!isLoading && <><h2>Contacts</h2><Filter /><ContactList /></>}</>
 }
