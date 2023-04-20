@@ -48,19 +48,23 @@ const contactsSlice = createSlice({
             .addCase(updateContact.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
-                const index = state.items.findIndex(
-                    contact => contact.id === action.payload.id
-                );
-                // state.items.map(contact => {
-                //     if (contact.id === action.payload.id) {
-                //         contact.name = action.payload.name;
-                //         contact.number = action.payload.number;
-                //     }
-                //     return contact;
-                state.items.splice(index, 1, action.payload.values)
+                state.items.map(contact => {
+                if (contact.id === action.payload.id) {
+                 contact.name = action.payload.name;
+                contact.number = action.payload.number;
+                }
+                return contact;
+    });
+            }
+                
+                // const index = state.items.findIndex(
+                //     contact => contact.id === action.payload.id
+                // ); ();
+                    // return contact;
+                    // state.items.splice(index, 1, action.payload.values)
+                )
+                    .addCase(updateContact.rejected, handleRejected)
             })
-            .addCase(updateContact.rejected, handleRejected)
-});
 
 
 

@@ -88,7 +88,7 @@ export const RegisterForm = () => {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 4, bgcolor: "#151b1e" }}
-              color="success"
+              
             >
               Sign Up
             </Button>

@@ -7,7 +7,6 @@ import {
   FormHelperText,
   InputAdornment,
   InputLabel,
-  Paper,
   FilledInput,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -17,9 +16,7 @@ import { Person, PhoneIphone } from '@mui/icons-material';
 export const UpdateContactForm = ({ onClose, id, name, number }) => {
   const dispatch = useDispatch();
 
-  //Form submit
   const handleSubmit = (values, resetForm) => {
-    console.log(values);
     if (
       name.trim().toLowerCase() === values.name.trim().toLowerCase() &&
       number === values.number
@@ -27,13 +24,7 @@ export const UpdateContactForm = ({ onClose, id, name, number }) => {
      alert('Please make changes to the contact');
       return;
     }
-    //Update contact
     dispatch(updateContact({ id, values }))
-      // .unwrap()
-      // .then(() => {
-      //     onClose();
-      // })
-      // .catch(() => alert('Oops, something went wrong. Please try again'));
     resetForm();
   };
 
@@ -46,10 +37,7 @@ export const UpdateContactForm = ({ onClose, id, name, number }) => {
   });
 
   return (
-    <Paper elevation={3} sx={{ p: 2 }}>
       <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}></Grid>
           <Grid item xs={12}>
             <FormControl variant="filled" fullWidth>
               <InputLabel htmlFor="name">Name</InputLabel>
@@ -66,7 +54,8 @@ export const UpdateContactForm = ({ onClose, id, name, number }) => {
                 onChange={formik.handleChange}
                 type="name"
                 label="Name"
-                error={formik.touched.name && Boolean(formik.errors.name)}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            sx={{color: "#e5e1e1", width: "320px"}}
               />
               <FormHelperText error={true}>
                 {formik.touched.name && formik.errors.name}
@@ -89,25 +78,26 @@ export const UpdateContactForm = ({ onClose, id, name, number }) => {
                 onChange={formik.handleChange}
                 type="text"
                 label="Number"
-                error={formik.touched.number && Boolean(formik.errors.number)}
+            error={formik.touched.number && Boolean(formik.errors.number)}
+            sx={{color: "#e5e1e1", width: "320px", fontSize: "16px"}}
               />
               <FormHelperText error={true}>
                 {formik.touched.number && formik.errors.number}
               </FormHelperText>
             </FormControl>
           </Grid>
-        </Grid>
+        
 
         <Button
           type="submit"
           fullWidth
           variant="contained"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{ mt: 3, bgcolor: "#151b1e", fontSize: "12px" }}
         >
           Update contact
         </Button>
       </form>
-    </Paper>
+    
   );
 };
 

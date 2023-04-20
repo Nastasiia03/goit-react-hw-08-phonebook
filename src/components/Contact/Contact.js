@@ -1,14 +1,15 @@
 import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/operations";
-import { Button } from "./Contact.styled";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Modal from '@mui/material/Modal';
-import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
 import { createPortal } from "react-dom";
 import { UpdateContactForm } from "components/ContactModal/ModalForm";
-
+import {Fab, ListItemIcon, ListItemText, ListItemSecondaryAction, Typography} from '@mui/material';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export const Contact = ({name, number, id, onClose}) => {
     const dispatch = useDispatch();
@@ -18,30 +19,85 @@ export const Contact = ({name, number, id, onClose}) => {
     const closeModal = () => setOpen(false);
     const modalRoot = document.querySelector("#modal-root");
 
-    const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-  
     return (
-        <>
-            <p>&#9742; {name} {number}</p> 
-            <Button type="button" onClick={() => setOpen(true)}>Update</Button>
-            <Button type="button" onClick={handleDelete}>Delete</Button>
-            
-            
+      <>
+        <ListItemIcon><LocalPhoneIcon /></ListItemIcon>
+        <ListItemText
+        primary={
+          <Typography
+            type="body2"
+            style={{
+              color: "#000000bf",
+              fontWeight: '600',
+            }}
+          >
+            {name}
+          </Typography>
+        }
+        secondary={
+          <Typography
+            type="body2"
+            style={{
+              color: "#000000bf",
+            }}
+          >
+            {number}
+          </Typography>
+        }
+      />
+            <ListItemSecondaryAction
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          mr: "10px",
+        }}
+      >
+        <Fab
+          aria-label="edit contact"
+          onClick={() => setOpen(true)}
+          edge="end"
+          sx={{
+            bgcolor: "#b3b3b3",
+            mb: { xs: '5px', md: '0' },
+            mr: { md: '10px' },
+            width: "40px",
+            height: "35px",
+          }}
+        >
+          <EditIcon />
+        </Fab>
+        <Fab
+          aria-label="delete contact"
+          onClick={handleDelete}
+          edge="end"
+          sx={{
+            bgcolor: "#b3b3b3",
+            width: "40px",
+            height: "35px",
+          }}
+        >
+          <DeleteForeverIcon />
+        </Fab>
+      </ListItemSecondaryAction>
+
+        {/* Modal window */}
             {open && createPortal(
               <Modal open={open}
                 onClose={closeModal}>
-               <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Box sx={{position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: 400,
+                  bgcolor: '#687074',
+                  borderRadius: "10px",
+                  boxShadow: 24,
+                  p: 4,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}>
+          <Typography id="modal-modal-title" variant="h6" component="h2" color="#e5e1e1" mb="25px">
             Please, update your contact here:
           </Typography>
             <UpdateContactForm 

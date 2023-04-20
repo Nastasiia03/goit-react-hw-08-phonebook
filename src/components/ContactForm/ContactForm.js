@@ -1,8 +1,10 @@
 import { Formik } from 'formik';
-import { Button, ErrorMessage, Field, Form, FormField } from './ContactForm.styled';
+import { ErrorMessage, Field, Form, FormField } from './ContactForm.styled';
 import { useDispatch, useSelector } from "react-redux";
 import { addContact} from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
+import { Button } from '@mui/material';
+import { Typography } from '@mui/material';
 
 function validateName(value) {
    let error;
@@ -46,6 +48,7 @@ export const ContactForm = () => {
     {({ errors, touched }) => {
           return (
             <Form>
+              <Typography component="h1" variant="h5" color="#e5e1e1" >Contact form</Typography>
               <FormField>
                 Name
                 <Field name="name" type="text" validate={validateName} />
@@ -57,7 +60,8 @@ export const ContactForm = () => {
                 {errors.number && touched.number && <ErrorMessage>{errors.number}</ErrorMessage>}
               </FormField>
 
-              <Button type="submit">Add contact</Button>
+              <Button type="submit" variant="contained"
+              sx={{ mt: 2,  bgcolor: "#151b1e", fontSize: "12px" }}>Add contact</Button>
               
             </Form>
           );
