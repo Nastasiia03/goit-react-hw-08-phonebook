@@ -55,15 +55,8 @@ const contactsSlice = createSlice({
                 }
                 return contact;
     });
-            }
-                
-                // const index = state.items.findIndex(
-                //     contact => contact.id === action.payload.id
-                // ); ();
-                    // return contact;
-                    // state.items.splice(index, 1, action.payload.values)
-                )
-                    .addCase(updateContact.rejected, handleRejected)
+            })
+            .addCase(updateContact.rejected, handleRejected)
             })
 
 

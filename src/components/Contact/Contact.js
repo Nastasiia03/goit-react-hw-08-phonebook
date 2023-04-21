@@ -5,18 +5,17 @@ import { useState } from "react";
 import Modal from '@mui/material/Modal';
 import { Box } from "@mui/material";
 import { createPortal } from "react-dom";
-import { UpdateContactForm } from "components/ContactModal/ModalForm";
+import { UpdateContactForm } from "components/ContactModal/UpdateContactForm";
 import {Fab, ListItemIcon, ListItemText, ListItemSecondaryAction, Typography} from '@mui/material';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-export const Contact = ({name, number, id, onClose}) => {
+export const Contact = ({name, number, id}) => {
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const handleDelete = () => dispatch(deleteContact(id));
 
-    const closeModal = () => setOpen(false);
     const modalRoot = document.querySelector("#modal-root");
 
     return (
@@ -83,7 +82,7 @@ export const Contact = ({name, number, id, onClose}) => {
         {/* Modal window */}
             {open && createPortal(
               <Modal open={open}
-                onClose={closeModal}>
+                onClose={() => setOpen(false)}>
                 <Box sx={{position: 'absolute',
                   top: '50%',
                   left: '50%',
@@ -104,7 +103,7 @@ export const Contact = ({name, number, id, onClose}) => {
                             id={id}
                             name={name}
                             number={number}
-                            onClose={onClose} />      
+                             />      
         </Box>
         </Modal>,
         modalRoot

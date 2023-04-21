@@ -10,7 +10,6 @@ import Box from '@mui/material/Box';
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -27,12 +26,8 @@ export const RegisterForm = () => {
     );
     form.reset();
     };
-    
-    const theme = createTheme();
 
-   return (<ThemeProvider theme={theme}>
-      <Container component="div" maxWidth="xs">
-        
+   return <Container component="div" maxWidth="xs">
         <Box
           sx={{
             display: 'flex',
@@ -59,7 +54,7 @@ export const RegisterForm = () => {
                   placeholder="Name"
                  autoFocus
                  variant="outlined"
-             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: "20px", mb: "20px", color: "white"}}
                 />
                 <InputBase
                   required
@@ -69,7 +64,7 @@ export const RegisterForm = () => {
                   name="email"
                  autoComplete="email"
                  variant="outlined"
-             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: "20px", mb: "20px", color: "white"}}
                 />
                 <InputBase
                   required
@@ -80,7 +75,7 @@ export const RegisterForm = () => {
                   id="password"
                  autoComplete="new-password"
                  variant="outlined"
-             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: "20px", mb: "20px", color: "white"}}
                 />
             
             <Button
@@ -101,7 +96,4 @@ export const RegisterForm = () => {
             </Grid>
           </Box>
         </Box>
-      </Container>
-    </ThemeProvider>
-  );
-}
+      </Container>}

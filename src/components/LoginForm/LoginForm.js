@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 import LockPerson from '@mui/icons-material/LockPerson';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
@@ -29,10 +29,9 @@ export const LoginForm = () => {
     form.reset();
     };
 
-    const theme = createTheme();
     
-   return <ThemeProvider theme={theme}>
-     <Container component="div" maxWidth="xs">
+    
+   return <Container component="div" maxWidth="xs">
        <Box
     sx={{
       display: 'flex',
@@ -59,7 +58,7 @@ export const LoginForm = () => {
         autoComplete="email"
              autoFocus
              variant="outlined"
-             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "20px", color: "white"}}
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: "20px", mb: "20px", color: "white"}}
              
       />
       <InputBase
@@ -71,7 +70,7 @@ export const LoginForm = () => {
         type="password"
         id="password"
              autoComplete="current-password"
-             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: theme.spacing(2), mb: "15px", color: "white"}}
+             sx={{ border: "1px solid #a7a0a0", borderRadius: "6px", width: "350px", height: "45px", padding: "20px", mb: "15px", color: "white"}}
       />
       <FormControlLabel
         control={<Checkbox value="remember" color="default" />}
@@ -95,5 +94,4 @@ export const LoginForm = () => {
       </Grid>
     </Box>
   </Box>
-</Container>
-</ThemeProvider>}
+</Container>}

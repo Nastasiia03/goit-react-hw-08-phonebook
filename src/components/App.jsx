@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "./Layout";
 import { Bar } from "./AppBar/AppBar";
 import { useDispatch } from 'react-redux';
 import { useAuth } from "hooks/useAuth";
@@ -30,8 +29,7 @@ useEffect(() => {
           <CssBaseline />
         <Bar/>
         <Routes>
-       <Route path="/" element={<Layout/>} />
-        <Route index element={<HomePage/>} />
+       <Route path="/" element={<HomePage/>} />
         <Route path="/register" element={<PublicRoute redirectTo="/contacts" component={<RegisterPage/>} />} />
         <Route path="/login" element={<PublicRoute redirectTo="/contacts" component={<LoginPage/>} />} />
           <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage/>} />} />

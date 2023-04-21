@@ -9,7 +9,6 @@ const dispatch = useDispatch();
     const filter = useSelector(selectFilter);
     
     
-   
 
     return (
         <InputBase type="text" value={filter} onChange={(e) => dispatch(handleFilter(e.target.value))} fullWidth placeholder="Find contact by name" autoFocus variant="outlined"

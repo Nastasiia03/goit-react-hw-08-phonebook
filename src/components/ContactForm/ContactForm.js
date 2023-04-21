@@ -5,26 +5,9 @@ import { addContact} from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 import { Button } from '@mui/material';
 import { Typography } from '@mui/material';
+import { validateName } from 'formValidation/formValidation';
+import { validateNumber } from 'formValidation/formValidation';
 
-function validateName(value) {
-   let error;
-   if (!value) {
-     error = 'Required';
-   } else if (!/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/i.test(value)) {
-     error = 'Invalid name';
-   }
-   return error;
- }
- 
- function validateNumber(value) {
-   let error;
-   if (!value) {
-     error = 'Required';
-   } else if (!/\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/i.test(value)) {
-     error = 'Invalid number';
-   }
-   return error;
- }
      
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);

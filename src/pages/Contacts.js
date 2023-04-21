@@ -25,13 +25,12 @@ const Contacts = () => {
     return <Grid component="main" sx={{ backgroundImage: `url(${Image})`, backgroundSize: "cover", backgroundPosition: 'center', height: '100vh', opacity: "0.92" }}>
         <Container maxWidth="lg" sx={{pt:"60px", display: "flex", gap: "250px", alignItems: "flex-start"}}>
         {isLoading && !error && <b>Request in progress...</b>}
-            {!isLoading && <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: "10px",
-          pl: "40px"
-          }}><Typography component="h1" variant="h4" color="white" mb="20px">My contacts</Typography><Filter /><ContactList /></Box>}
-             <ContactForm />
+            {!isLoading && <><Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                borderRadius: "10px",
+                pl: "40px"
+            }}><Typography component="h1" variant="h4" color="white" mb="20px">My contacts</Typography><Filter /><ContactList /></Box><ContactForm /></>}
             </Container>
     </Grid>
 };
